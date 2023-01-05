@@ -8,8 +8,8 @@ if (!isMainThread) {
 const poolSize = 3;
 
 const pool = Array(poolSize).fill('')
-    .reduce((p, _, i) => {
-        const worker: Worker = new Worker('./worker/worker-entry.mjs', {
+    .reduce<Record<`worker${number}`, Worker>>((p, _, i) => {
+        const worker = new Worker('./worker/worker-entry.mjs', {
             env: {
                 WORKER_ID: String(i),
                 NODE_NO_WARNINGS: '1',
