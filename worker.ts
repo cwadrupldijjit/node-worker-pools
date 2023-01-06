@@ -8,5 +8,5 @@ if (isMainThread) {
 parentPort.on('message', (message: string) => {
     console.log('Hello from worker %s.  Your input was %s.', process.env.WORKER_ID, message);
     
-    parentPort.postMessage(Buffer.from(message).toString('hex'));
+    parentPort.postMessage(Buffer.from(message).toString('base64'));
 });

@@ -9,7 +9,7 @@ const poolSize = 3;
 
 const pool = Array(poolSize).fill('')
     .reduce<Record<`worker${number}`, Worker>>((p, _, i) => {
-        const worker = new Worker('./worker/worker-entry.mjs', {
+        const worker = new Worker('./worker.ts', {
             env: {
                 WORKER_ID: String(i),
                 NODE_NO_WARNINGS: '1',
